@@ -1,7 +1,9 @@
 # TP-La Croisée des chemins
 
 Entrée : Une liste de chemins au format UNIX
+
 Sortie : Un affichage sous forme d’arbre
+
 
 Contraintes :
 - Langage orienté objet (C++, C#, Java, PHP...)
