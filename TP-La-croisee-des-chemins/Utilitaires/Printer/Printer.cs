@@ -1,7 +1,7 @@
-public class Printer implements IPrinter
+public class Printer : IPrinter
 {
-    public void Print()
+    public void Print(INoeud noeud)
     {
-        System.out.println("Printer is printing");
+        Console.WriteLine("noeud : ", noeud);
     }
 }

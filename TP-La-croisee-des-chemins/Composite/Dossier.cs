@@ -1,26 +1,57 @@
-public class Dossier implements INoeud
+public class Dossier : INoeud
 {
-    private sousDossiers: List<INoeud>;
-    private Printer printer = new Printer();
+    private string nom = "";
+    private List<INoeud> enfants = new List<INoeud>();
+    private INoeud parent = null;
+    private Printer printer;
+
+    public string GetNom()
+    {
+        return this.nom;
+    }
+
+    public INoeud GetParent()
+    {
+        return this.parent;
+    }
+
+    public void SetNom(string nom)
+    {
+        this.nom = nom;
+    }
+
+    public int GetProfondeur()
+    {
+        int niveau = 0;
+
+        var par = this.parent;
+
+        while (par != null)
+        {
+            niveau++;
+            par = par.GetParent();
+        }
+
+        return niveau;
+    }
+
+    public bool IsRoot()
+    {
+        return this.parent == null;
+    }
 
     public void Print()
     {
-        printer.Print(this);
+        this.printer.Print(this);
     }
 
-    public void Add(INoeud noeud)
+    public void AddEnfant(INoeud enfant)
     {
-        sousDossiers.Add(noeud);
+        this.enfants.Add(enfant);
     }
-
-    public void Remove(INoeud noeud)
+    public void RemoveEnfant(INoeud enfant)
     {
-        sousDossiers.Remove(noeud);
+        this.enfants.Remove(enfant);
+        
     }
-
-    public List<INoeud> GetSousDossiers()
-    {
-        return sousDossiers;
-    }
-
 }
